@@ -30,11 +30,11 @@ result_matrix = multiply_matrices(matrix_2x2, matrix_2x2) #Вызов функц
 # Определение ранга матрицы
 rank = determine_matrix_rank(matrix_2x2)     #Вызов функции, определяющей раанг матрицы
 
-print("Transposed 1x2 matrix:\n", transposed_1x2)
-print("Transposed 2x1 matrix:\n", transposed_2x1)
-print("Transposed 1x3 matrix:\n", transposed_1x3)
-print("Transposed 3x1 matrix:\n", transposed_3x1)
-print("Transposed 2x2 matrix:\n", transposed_2x2)
-print("Transposed 3x3 matrix:\n", transposed_3x3)
-print("Result of matrix multiplication (2x2):\n", result_matrix)
-print("Rank of 2x2 matrix:", rank)
+print("Транспонированная 1x2 матрица:\n", transposed_1x2)
+print("Транспонированная 2x1 матрица:\n", transposed_2x1)
+print("Транспонированная 1x3 матрица:\n", transposed_1x3)
+print("Транспонированная 3x1 матрица:\n", transposed_3x1)
+print("Транспонированная 2x2 матрица:\n", transposed_2x2)
+print("Транспонированная 3x3 матрица:\n", transposed_3x3)
+print("Результат умножения матриц (2x2):\n", result_matrix)
+print("Ранг 2x2 матрицы:", rank)
