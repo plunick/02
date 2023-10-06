@@ -1,0 +1,40 @@
+import NumPy as np  #Импорт библиотеки NumPy, которая предоставляет функции для работы с матрицами и векторами
+
+def transpose_matrix(matrix):
+    return np.transpose(matrix) # Команда для транспонирования переданной матрицы
+def multiply_matrices(matrix1, matrix2):
+    return np.dot(matrix1, matrix2) # Команда для  умножения двух переданных матриц
+
+def determine_matrix_rank(matrix):
+    return np.linalg.matrix_rank(matrix) #Команда для определения ранга матрицы
+
+# Примеры матриц
+matrix_1x2 = np.array([[1, 2]])     #Функция .array трансформирует вложенные последовательности в многомерные массивы
+matrix_2x1 = np.array([[3], [4]])
+matrix_1x3 = np.array([[1, 2, 3]])
+matrix_3x1 = np.array([[4], [5], [6]])
+matrix_2x2 = np.array([[1, 2], [3, 4]])
+matrix_3x3 = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+# Транспонированные матрицы
+transposed_1x2 = transpose_matrix(matrix_1x2)   #Вызов функции, транспонирующей матрицу
+transposed_2x1 = transpose_matrix(matrix_2x1)
+transposed_1x3 = transpose_matrix(matrix_1x3)
+transposed_3x1 = transpose_matrix(matrix_3x1)
+transposed_2x2 = transpose_matrix(matrix_2x2)
+transposed_3x3 = transpose_matrix(matrix_3x3)
+
+# Умножение матриц
+result_matrix = multiply_matrices(matrix_2x2, matrix_2x2) #Вызов функции, умножающей матрицы
+
+# Определение ранга матрицы
+rank = determine_matrix_rank(matrix_2x2)     #Вызов функции, определяющей раанг матрицы
+
+print("Transposed 1x2 matrix:\n", transposed_1x2)
+print("Transposed 2x1 matrix:\n", transposed_2x1)
+print("Transposed 1x3 matrix:\n", transposed_1x3)
+print("Transposed 3x1 matrix:\n", transposed_3x1)
+print("Transposed 2x2 matrix:\n", transposed_2x2)
+print("Transposed 3x3 matrix:\n", transposed_3x3)
+print("Result of matrix multiplication (2x2):\n", result_matrix)
+print("Rank of 2x2 matrix:", rank)
