@@ -1,3 +1,95 @@
+def transpose_matrix(matrix):
+    # Определение размеров входной матрицы
+    rows = len(matrix)
+    cols = len(matrix[0])
+
+    # Создание пустой транспонированной матрицы
+    transposed = [[0 for _ in range(rows)] for _ in range(cols)]
+
+    # Заполнение транспонированной матрицы
+    for i in range(rows):
+        for j in range(cols):
+            transposed[j][i] = matrix[i][j]
+
+    return transposed
+
+def multiply_matrices(matrix1, matrix2):
+    # Определение размеров матриц
+    rows1 = len(matrix1)
+    cols1 = len(matrix1[0])
+    rows2 = len(matrix2)
+    cols2 = len(matrix2[0])
+
+    # Проверка на возможность умножения матриц
+    if cols1 != rows2:
+        return None  # Умножение невозможно
+
+    # Создание пустой матрицы для результата умножения
+    result = [[0 for _ in range(cols2)] for _ in range(rows1)]
+
+    # Выполнение умножения матриц
+    for i in range(rows1):
+        for j in range(cols2):
+            for k in range(cols1):
+                result[i][j] += matrix1[i][k] * matrix2[k][j]
+
+    return result
+
+def determine_matrix_rank(matrix):
+    # Определение размеров матрицы
+    rows = len(matrix)
+    cols = len(matrix[0])
+
+    # Инициализация ранга
+    rank = 0
+
+    # Применение метода Гаусса для приведения матрицы к ступенчатому виду
+    for i in range(min(rows, cols)):
+        # Поиск ненулевого элемента в текущем столбце
+        nonzero_row = None
+        for j in range(i, rows):
+            if matrix[j][i] != 0:
+                nonzero_row = j
+                break
+
+        if nonzero_row is None:
+            continue  # Весь столбец нулевой, переходим к следующему столбцу
+
+        # Обмен строк для перемещения ненулевого элемента на диагональ
+        matrix[i], matrix[nonzero_row] = matrix[nonzero_row], matrix[i]
+
+        # Обнуление элементов ниже текущей строки
+        for j in range(i + 1, rows):
+            factor = matrix[j][i] / matrix[i][i]
+            for k in range(i, cols):
+                matrix[j][k] -= factor * matrix[i][k]
+
+        rank += 1
+
+    return rank
+
+# Примеры матриц
+matrix_1x2 = [[1, 2]]
+matrix_2x1 = [[3], [4]]
+matrix_1x3 = [[1, 2, 3]]
+matrix_3x1 = [[4], [5], [6]]
+matrix_2x2 = [[1, 2], [3, 4]]
+matrix_3x3 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+# Транспонирование матриц
+transposed_1x2 = transpose_matrix(matrix_1x2)
+transposed_2x1 = transpose_matrix(matrix_2x1)
+transposed_1x3 = transpose_matrix(matrix_1x3)
+transposed_3x1 = transpose_matrix(matrix_3x1)
+transposed_2x2 = transpose_matrix(matrix_2x2)
+transposed_3x3 = transpose_matrix(matrix_3x3)
+
+# Умножение матриц (пример: matrix_2x2 умножается на matrix_2x2)
+result_matrix = multiply_matrices(matrix_2x2, matrix_2x2)
+
+# Определение ранга (пример: matrix_2x2)
+rank = determine_matrix_rank(matrix_2x2)
+
 print("Транспонированная 1x2 матрица:\n", transposed_1x2)
 print("Транспонированная 2x1 матрица:\n", transposed_2x1)
 print("Транспонированная 1x3 матрица:\n", transposed_1x3)
